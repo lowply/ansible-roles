@@ -1,0 +1,9 @@
+---
+
+- name: yum update
+  yum: name=* state=latest
+  register: result
+- debug: msg="Please reboot to reflect this chenge"
+  when: result.changed
+- name: install epel
+  yum: name=epel-release state=latest

@@ -1,0 +1,7 @@
+roles/dotfiles/vars/main.yml
+roles/user/files/id_rsa.pub
+roles/user/vars/main.yml
+roles/awscli/vars/main.yml
+roles/sshd_config/vars/main.yml
+/hosts
+/main.yml

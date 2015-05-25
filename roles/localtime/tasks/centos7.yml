@@ -1,0 +1,3 @@
+---
+- name: timedatectl
+  command: "timedatectl set-timezone Asia/Tokyo"

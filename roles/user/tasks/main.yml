@@ -1,0 +1,14 @@
+---
+
+- name: change root password
+  user: name=root password={{password}}
+- name: add user with wheel as primary group
+  user: name={{user}} group=wheel password={{password}}
+- name: add auth key to the user
+  authorized_key: user={{user}} key="{{key}}"
+- name: nopassword sudo for wheel group user
+  template: src=wheel.j2 dest=/etc/sudoers.d/wheel owner=root group=root mode=0440
+- name: add SSH_AUTH_SOCK to env_keep
+  template: src=ssh_auth_sock.j2 dest=/etc/sudoers.d/ssh_auth_sock owner=root group=root mode=0440
+- name: add "sudo -i" to user's .bashrc
+  lineinfile: dest=/home/{{ user }}/.bashrc line='sudo -i'

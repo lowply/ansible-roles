@@ -1,0 +1,11 @@
+---
+- name: git clone dotfiles
+  git: repo={{ github_repo }} dest=~/dotfiles accept_hostkey=yes
+- name: create symlinks
+  command: ~/dotfiles/script/bootstrap.py
+- name: update gitconfig
+  replace: dest=~/.gitconfig.local regexp="{{ item.regexp }}" replace="{{ item.line }}" backup="{{ item.backup }}"
+  with_items:
+    # only first action makes a backup file.
+    - { regexp: 'AUTHOR NAME', line: '{{ github_user }}', backup: 'yes' }
+    - { regexp: 'AUTHOR ADDRESS', line: '{{ github_email }}', backup: 'no' }

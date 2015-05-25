@@ -1,0 +1,25 @@
+---
+
+- name: nginx on CentOS 7
+  when:
+    ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+  yum: name=http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm state=present
+
+- name: nginx on CentOS 6
+  when:
+    ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
+  yum: name=http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm state=present
+
+- name: nginx on Amazon Linux
+  when:
+    ansible_distribution == "Amazon"
+  yum: name=http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm state=present
+
+- name: enable mainline repository
+  replace: dest=/etc/yum.repos.d/nginx.repo regexp='packages/centos' replace='packages/mainline/centos' backup=yes
+
+- name: up priority
+  lineinfile: dest=/etc/yum.repos.d/nginx.repo backup=yes line="priority=1" state="present"
+
+- name: install nginx
+  yum: name=nginx state=latest

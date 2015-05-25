@@ -1,0 +1,2 @@
+compiledir: /usr/local/src/vim
+configureopts: --prefix=/usr/local/vim --with-features=huge --enable-multibyte --enable-luainterp --enable-fail-if-missing

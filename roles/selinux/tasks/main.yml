@@ -1,0 +1,6 @@
+---
+
+- name: disable selinux in file
+  selinux: policy=targeted state=disabled
+- name: disable selinux
+  command: "setenforce 0"

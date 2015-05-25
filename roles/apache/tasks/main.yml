@@ -1,0 +1,33 @@
+---
+
+- name: apache 2.4.x on CentOS 7
+  when: >
+    ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+  yum: name=httpd state=latest
+  yum: name=httpd-devel state=latest
+  yum: name=mod_ssl state=latest
+
+- name: apache 2.4.x on CentOS 6
+  when: >
+    ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
+  yum: name=httpd state=latest
+  yum: name=httpd-devel state=latest
+  yum: name=mod_ssl state=latest
+
+- name: apache 2.4.x on Amazon Linux
+  when: >
+    ansible_distribution == "Amazon"
+  yum: name=httpd24 state=latest
+  yum: name=httpd24-devel state=latest
+  yum: name=mod24_ssl state=latest
+
+- name: chkconfig/enable for httpd
+  service: name=httpd enabled=yes
+
+# - name: hide welcome.conf
+
+# http://centos.bungu-do.jp/archives/000227.html
+- name: Disable AddDefaultCharset UTF-8
+  lineinfile: dest=/etc/httpd/conf/httpd.conf backup=yes regexp="{{item.regexp}}" line="{{item.line}}"
+  with_items:
+    - { regexp: '^AddDefaultCharset UTF-8', line: '#AddDefaultCharset UTF-8' }

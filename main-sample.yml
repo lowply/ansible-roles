@@ -1,0 +1,21 @@
+- hosts: main
+  sudo: yes
+  roles:
+    - yum
+    - user
+    - localtime
+    - hostname
+    - selinux
+    - jq
+    - git
+    - dotfiles
+    - go
+    - publicdns2cname
+    - docker
+    - nginx
+    - apache
+    - vim
+    - pip
+    - awscli
+    - supervisor
+    - sshd_config

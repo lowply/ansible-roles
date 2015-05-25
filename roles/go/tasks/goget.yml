@@ -1,0 +1,12 @@
+---
+
+- name: install go tools
+  shell: export GOPATH={{ ansible_env.HOME }}; /usr/local/bin/go get -u {{ item }}
+  with_items:
+    - github.com/peco/peco/cmd/peco
+    - github.com/motemen/ghq
+    - github.com/nsf/gocode
+    - github.com/golang/lint/golint
+    - golang.org/x/tools/cmd/godoc
+    - golang.org/x/tools/cmd/vet
+    - golang.org/x/tools/cmd/goimports

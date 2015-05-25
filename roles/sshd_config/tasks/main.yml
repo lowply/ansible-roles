@@ -1,0 +1,12 @@
+---
+
+# http://developer.covelline.com/2014/08/ansible-lineinfile-with_items/
+- name: configure sshd_config
+  lineinfile: dest=/etc/ssh/sshd_config regexp="{{ item.regexp }}" line="{{ item.line }}" backup="{{ item.backup }}"
+  with_items:
+    # only first action makes a backup file.
+    - { regexp: '^#PasswordAuthentication yes', line: 'PasswordAuthentication no', backup: 'yes' }
+    - { regexp: '^#PermitRootLogin yes', line: 'PermitRootLogin no', backup: 'no' }
+    - { regexp: '^#Port 22', line: 'Port "{{ sshd_port }}"', backup: 'no' }
+- name: restart sshd
+  service: name=sshd state=restarted

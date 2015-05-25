@@ -1,0 +1,14 @@
+---
+
+- name: clone publicdns2cname 
+  when: >
+    ansible_distribution == "Amazon"
+  git: repo="https://github.com/lowply/publicdns2cname.git" dest=~/src/github.com/lowply/publicdns2cname accept_hostkey=yes
+- name: link publicdns2cname 
+  when: >
+    ansible_distribution == "Amazon"
+  file: src=~/src/github.com/lowply/publicdns2cname/publicdns2cname dest=/etc/init.d/publicdns2cname state=link
+- name: enable publicdns2cname
+  when: >
+    ansible_distribution == "Amazon"
+  service: name=publicdns2cname enabled=yes

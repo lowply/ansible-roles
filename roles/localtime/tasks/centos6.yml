@@ -1,0 +1,5 @@
+---
+- name: update sysconfig/clock
+  replace: backup=yes dest=/etc/sysconfig/clock regexp='ZONE="UTC"' replace='ZONE="Asia/Tokyo"'
+- name: update tzdata
+  command: "tzdata-update"

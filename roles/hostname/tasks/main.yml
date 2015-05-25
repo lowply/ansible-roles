@@ -1,0 +1,10 @@
+---
+
+- name: Gather facts
+  when: >
+    ansible_distribution == "Amazon"
+  action: ec2_facts
+
+- name: Set hostname
+  script: hostname.sh {{ ansible_ec2_instance_id }}
+  when: ansible_ec2_instance_id is defined

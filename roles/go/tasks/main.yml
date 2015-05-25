@@ -1,0 +1,16 @@
+---
+
+- name: remove old go dir
+  file: path={{ goroot }} state=absent
+- name: download go
+  get_url: url={{ disturl }}{{ distver }}.{{ disttype }}.{{ extension }} dest=/usr/local/src/{{ distver }}.{{ disttype }}.{{ extension }} mode=0644
+- name: unarchive
+  unarchive: src=/usr/local/src/{{ distver }}.{{ disttype }}.{{ extension }} dest=/usr/local/ copy=no
+- name: link binaries
+  file: src={{ goroot }}/bin/{{ item }} dest={{ localbin }}/{{ item }} state=link
+  with_items:
+    - go
+    - gofmt
+    - godoc
+- name: go get
+  include: goget.yml

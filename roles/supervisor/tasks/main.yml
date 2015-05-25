@@ -1,0 +1,3 @@
+---
+- name: install supervisor
+  pip: name="supervisor" state="latest"

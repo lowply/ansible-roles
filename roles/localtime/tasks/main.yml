@@ -1,0 +1,15 @@
+---
+- name: localtime to Japan on Amazon Linux
+  when: >
+    ansible_distribution == "Amazon"
+  include: al.yml
+
+- name: localtime to Japan on CentOS 7
+  when: >
+    ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+  include: centos7.yml
+
+- name: localtime to Japan on CentOS 6
+  when: >
+    ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
+  include: centos6.yml

@@ -1,0 +1,7 @@
+---
+- name: update gitconfig
+  replace: dest=~/.gitconfig.local regexp="" line="" backup=""
+  with_items:
+    # only first action makes a backup file.
+    - { regexp: 'AUTHOR NAME', line: '{{ github_user }}', backup: 'yes' }
+    - { regexp: 'AUTHOR ADDRESS', line: '{{ github_email }}', backup: 'no' }

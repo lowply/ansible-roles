@@ -1,0 +1,6 @@
+disturl: "https://storage.googleapis.com/golang/"
+distver: "go1.4.2"
+disttype: "linux-amd64"
+extension: "tar.gz"
+goroot: "/usr/local/go"
+localbin: "/usr/local/bin"

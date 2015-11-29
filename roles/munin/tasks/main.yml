@@ -1,0 +1,4 @@
+---
+
+- name: install munin
+  yum: name=munin state=latest

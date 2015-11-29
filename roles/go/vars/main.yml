@@ -1,5 +1,5 @@
 disturl: "https://storage.googleapis.com/golang/"
-distver: "go1.4.2"
+distver: "go1.5.1"
 disttype: "linux-amd64"
 extension: "tar.gz"
 goroot: "/usr/local/go"

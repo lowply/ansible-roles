@@ -1,0 +1,16 @@
+---
+
+- name: mariadb on CentOS 7
+  when: >
+    ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+  include: mariadb.yml
+
+- name: mysql on CentOS 6
+  when: >
+    ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
+  include: mysql.yml
+
+- name: mysql on Amazon Linux
+  when: >
+    ansible_distribution == "Amazon"
+  include: mysql.yml

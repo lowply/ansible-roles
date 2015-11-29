@@ -1,0 +1,12 @@
+---
+- name: git clone rbenv
+  git: repo={{repo_url_rbenv}} dest=~/.rbenv accept_hostkey=yes
+
+- name: git clone ruby-build
+  git: repo={{repo_url_rubybuild}} dest=~/.rbenv/plugins/ruby-build accept_hostkey=yes
+
+- name: install ruby
+  shell: cd; bash -lc "rbenv install {{version}}"
+
+- name: enable ruby
+  shell: cd; bash -lc "rbenv global {{version}}"

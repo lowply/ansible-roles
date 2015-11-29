@@ -1,0 +1,11 @@
+---
+- name: install nagios and nrpe
+  yum: name={{item}} state=latest
+  with_items:
+    - nagios-plugins-all
+    - nagios-devel
+    - nrpe
+- name: start nrpe
+  service: name=nrpe state=started
+- name: enable nrpe
+  service: name=nrpe enabled=yes

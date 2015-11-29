@@ -1,0 +1,8 @@
+---
+- name: install wordpress
+  yum: name=wordpress state=latest
+# - name: install pear dependencies
+#   pear: name={{item}} state=latest
+#   with_items:
+#     - Mail
+#     - Mail_Mime

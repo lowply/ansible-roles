@@ -1,0 +1,20 @@
+---
+- name: install php
+  yum: name={{item}} state=latest
+  with_items:
+  - php
+  - php-devel
+  - php-common
+  - php-mcrypt
+  - php-pear
+  - php-fpm
+  - php-pecl-memcache
+
+- name: Change timezone in php.ini
+  lineinfile: dest=/etc/php.ini backup=yes regexp="{{item.regexp}}" line="{{item.line}}"
+  with_items:
+  - { regexp: ';date.timezone =', line: 'date.timezone = \"{{timezone}}\"' }
+
+- name: copy memcache.ini
+  template: src=memcache.ini.j2 dest=/etc/php.d/memcache.ini backup=yes
+

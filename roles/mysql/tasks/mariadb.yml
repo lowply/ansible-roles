@@ -1,0 +1,9 @@
+---
+
+- name: mariadb
+  yum: name=mariadb state=latest
+  yum: name=mariadb-devel state=latest
+  yum: name=mariadb-server state=latest
+
+- name: chkconfig/enable
+  service: name=mariadb enabled=yes

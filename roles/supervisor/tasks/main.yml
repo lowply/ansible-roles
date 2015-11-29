@@ -1,3 +1,10 @@
 ---
-- name: install supervisor
-  pip: name="supervisor" state="latest"
+# - name: install supervisor
+#   shell: bash -lc "pip install supervisor"
+- name: copy config
+  template: src=supervisord.conf.j2 dest={{conf_location}} owner=root group=root mode=0664
+- name: create conf dir
+  file: path=/etc/supervisord.d state=directory
+- include: centos7.yml
+  when: >
+    ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"

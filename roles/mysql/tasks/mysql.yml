@@ -1,0 +1,9 @@
+---
+
+- name: mysql
+  yum: name=mysql state=latest
+  yum: name=mysql-devel state=latest
+  yum: name=mysql-server state=latest
+
+- name: chkconfig/enable
+  service: name=mysql enabled=yes

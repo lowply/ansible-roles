@@ -4,3 +4,11 @@ disttype: "linux-amd64"
 extension: "tar.gz"
 goroot: "/usr/local/go"
 localbin: "/usr/local/bin"
+packages:
+  - github.com/peco/peco/cmd/peco
+  - github.com/motemen/ghq
+  - github.com/nsf/gocode
+  - github.com/golang/lint/golint
+  - golang.org/x/tools/cmd/godoc
+  - golang.org/x/tools/cmd/vet
+  - golang.org/x/tools/cmd/goimports

@@ -1,0 +1,3 @@
+systemd_script_location: /etc/systemd/system/supervisord.service 
+conf_location: /etc/supervisord.conf
+

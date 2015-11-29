@@ -1,0 +1,4 @@
+lines:
+  - { regexp: '^PasswordAuthentication yes', line: 'PasswordAuthentication no', backup: 'yes' }
+  - { regexp: '^#PermitRootLogin yes', line: 'PermitRootLogin no', backup: 'no' }
+  - { regexp: '^#Port 22', line: 'Port "{{ sshd.port }}"', backup: 'no' }

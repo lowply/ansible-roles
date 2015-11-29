@@ -1,0 +1,12 @@
+---
+- name: git clone pyenv
+  git: repo={{repo_url}} dest=~/.pyenv accept_hostkey=yes
+
+- name: install python
+  shell: cd; bash -lc "pyenv install {{version}}"
+
+- name: enable python
+  shell: cd; bash -lc "pyenv global {{version}}"
+
+- name: update pip
+  shell: bash -lc "pip install -U pip"

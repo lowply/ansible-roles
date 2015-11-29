@@ -1,0 +1,13 @@
+libs:
+  - patch
+  - readline-devel
+  - zlib-devel
+  - sqlite-devel
+  - openssl-devel
+  - bzip2-devel
+  - bash-completion
+  - pwgen
+  - bind-utils
+  - dstat
+  - net-tools
+  - yum-cron

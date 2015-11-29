@@ -1,0 +1,9 @@
+---
+- name: clone tj/n
+  git: repo={{repo_url}} dest={{ansible_env.HOME}}/n
+
+- name: install tj/n
+  shell: cd {{ansible_env.HOME}}/n; make install
+
+- name: install node
+  shell: bash -lc "n latest"

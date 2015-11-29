@@ -1,4 +1,14 @@
 ---
 
 - name: install munin
-  yum: name=munin state=latest
+  yum: name={{item}} state=latest
+  with_items:
+    - munin
+    - munin-node
+    - munin-common
+
+- name: start munin-node
+  service: name=munin-node state=started
+
+- name: enable munin-node
+  service: name=munin-node enabled=yes

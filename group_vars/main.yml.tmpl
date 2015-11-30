@@ -3,7 +3,8 @@ sshd:
   port: 22
 user:
   name: username
-  password: "hashed_password"
+  password: hashed_password
+  root_password: hashed_password
   public_key: "{{ lookup ('file','id_rsa.pub') }}"
 awscli:
   output: json

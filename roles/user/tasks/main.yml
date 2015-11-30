@@ -1,7 +1,7 @@
 ---
 
 - name: change root password
-  user: name=root password={{user.password}}
+  user: name=root password={{user.root_password}}
 - name: add user with wheel as primary group
   user: name={{user.name}} group=wheel password={{user.password}}
 - name: add auth key to the user

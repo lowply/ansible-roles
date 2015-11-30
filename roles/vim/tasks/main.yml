@@ -14,11 +14,12 @@
   yum: name=lua-devel state=latest
 - name: clone vim source
   git: repo="https://github.com/vim/vim.git" dest={{ compiledir }}
-- name: make source with lua enabled
-  shell: >-
-    # to make pyenv enabled, need to compile through bash -lc
-    bash -lc "./configure {{ configureopts }} && make && make install"
-    chdir={{ compiledir }}
-    creates={{ compiledir }}/src/vim
+- name: vim configure
+  # to make pyenv enabled, need to compile through bash -lc
+  shell: chdir={{ compiledir }} bash -lc "./configure {{ configureopts }}"
+- name: vim make
+  shell: chdir={{ compiledir }} make
+- name: vim make install
+  shell: chdir={{ compiledir }} make install
 - name: make symlink
   file: src=/usr/local/vim/bin/vim dest=/usr/local/bin/vim state=link

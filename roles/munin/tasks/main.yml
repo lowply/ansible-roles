@@ -7,8 +7,5 @@
     - munin-node
     - munin-common
 
-- name: start munin-node
-  service: name=munin-node state=started
-
 - name: enable munin-node
-  service: name=munin-node enabled=yes
+  service: name=munin-node state=started enabled=yes

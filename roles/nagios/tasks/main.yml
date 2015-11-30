@@ -6,6 +6,4 @@
     - nagios-devel
     - nrpe
 - name: start nrpe
-  service: name=nrpe state=started
-- name: enable nrpe
-  service: name=nrpe enabled=yes
+  service: name=nrpe state=started enabled=yes

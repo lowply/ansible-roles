@@ -3,10 +3,9 @@ Description=Supervisor daemon
 Documentation=http://supervisord.org
 
 [Service]
-ExecStart=/usr/bin/supervisord -c /etc/supervisord.conf
-ExecReload=/usr/bin/supervisorctl reload
-ExecStop=/usr/bin/supervisorctl shutdown
-
+ExecStart=/root/.pyenv/shims/supervisord -n -c /etc/supervisord.conf
+ExecStop=/root/.pyenv/shims/supervisorctl $OPTIONS shutdown
+ExecReload=/root/.pyenv/shims/supervisorctl $OPTIONS reload
 KillMode=process
 Restart=on-failure
 RestartSec=42s

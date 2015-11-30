@@ -4,7 +4,7 @@ sshd:
 user:
   name: username
   password: "hashed_password"
-  public_key: {{ lookup ('file','id_rsa.pub') }}
+  public_key: "{{ lookup ('file','id_rsa.pub') }}"
 awscli:
   output: json
   region: ap-northeast-1

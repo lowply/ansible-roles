@@ -16,6 +16,7 @@
   git: repo="https://github.com/vim/vim.git" dest={{ compiledir }}
 - name: make source with lua enabled
   shell: >-
+    # to make pyenv enabled, need to compile through bash -lc
     bash -lc "./configure {{ configureopts }} && make && make install"
     chdir={{ compiledir }}
     creates={{ compiledir }}/src/vim
